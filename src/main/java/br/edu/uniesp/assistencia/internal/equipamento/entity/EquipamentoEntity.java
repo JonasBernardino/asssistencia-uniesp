@@ -31,4 +31,15 @@ public class EquipamentoEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cliente_id", nullable = false)
     private ClienteEntity cliente;
+
+    public EquipamentoEntity(String tipo, String marca, String modelo, String numeroSerie) {
+        this.tipo = tipo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.numeroSerie = numeroSerie;
+    }
+
+    public void associarCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
 }

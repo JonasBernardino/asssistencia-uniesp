@@ -38,6 +38,10 @@ public class ClienteEntity {
         this.cpf = cpf;
         this.email = email;
     }
+    public void adicionarEquipamento(EquipamentoEntity equipamento) {
+        equipamentos.add(equipamento);
+        equipamento.associarCliente(this);
+    }
 
     public void alterarNome(String nome) {
         this.nome = nome;
