@@ -28,8 +28,9 @@ public class ClienteEntity {
     private String email;
 
     @Column(nullable = false)
-    private boolean ativo;
+    private boolean ativo= true;
 
+    @OneToMany(mappedBy = "cliente")
     private List<EquipamentoEntity> equipamentos;
 
     public ClienteEntity(String nome, String cpf, String email) {
