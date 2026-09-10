@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: assistencia-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: assistencia
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - assistencia_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  assistencia_postgres_data:
