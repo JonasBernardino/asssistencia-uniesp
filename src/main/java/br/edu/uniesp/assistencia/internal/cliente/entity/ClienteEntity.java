@@ -3,6 +3,7 @@ package br.edu.uniesp.assistencia.internal.cliente.entity;
 import br.edu.uniesp.assistencia.internal.equipamento.entity.EquipamentoEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -38,6 +39,7 @@ public class ClienteEntity {
         this.cpf = cpf;
         this.email = email;
     }
+
     public void adicionarEquipamento(EquipamentoEntity equipamento) {
         equipamentos.add(equipamento);
         equipamento.associarCliente(this);
@@ -54,4 +56,5 @@ public class ClienteEntity {
     public void inativar() {
         this.ativo = false;
     }
+
 }
