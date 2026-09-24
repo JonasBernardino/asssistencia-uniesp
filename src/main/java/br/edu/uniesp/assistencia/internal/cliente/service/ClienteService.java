@@ -1,5 +1,6 @@
 package br.edu.uniesp.assistencia.internal.cliente.service;
 
+import br.edu.uniesp.assistencia.internal.cliente.dto.AtualizarClienteRequest;
 import br.edu.uniesp.assistencia.internal.cliente.dto.ClienteResumoResponse;
 import br.edu.uniesp.assistencia.internal.cliente.dto.CriarClienteRequest;
 import br.edu.uniesp.assistencia.internal.cliente.dto.CriarClienteResponse;
@@ -24,8 +25,16 @@ public class ClienteService {
     }
 
     public ClienteResumoResponse buscarClientePorId(Long id){
-        ClienteEntity response =  clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        ClienteEntity response = buscarCliente(id);
         return ClienteMapper.paraResumoResposta(response);
+    }
+
+    public ClienteResumoResponse atualizarCliente(Long id, AtualizarClienteRequest request){
+        ClienteEntity response =  buscarCliente(id);
+    }
+
+    private ClienteEntity buscarCliente(Long id) {
+        return  clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 }
